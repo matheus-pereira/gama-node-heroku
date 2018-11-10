@@ -1,4 +1,27 @@
 /*
+    --TRATAMENTO DE EXCEÇÃO
+        O node.js, por definição, caso alguma exceção inesperada aconteça,
+        TODOS os clientes sairão do ar
+
+        Para não utilizar o comando node para rodar dados
+
+        Para gerenciar a aplicação, quantidade de réplicas,
+        status, gerenciamento de memória, gerenciamento online,
+        discos, instalamos o pm2 keymetrics, que rodará em segundo plano
+
+        npm i -g pm2 
+        //Caso use Heroku, requisitar que instale o pm2.
+
+        Para subir a aplicação
+        pm2 start api.js --name api-posts -i 10 //(--name determina o nome do serviço, o número refere-se a 10 instâncias)
+        
+        pm2 list
+        pm2 show api-posts
+        pm2 restart api-posts
+        pm2 stop api-posts
+        pm2 logs api-posts
+
+
     --HEROKU
         Instalamos o heroku cli, via 
         npm i -g heroku
@@ -261,8 +284,14 @@ async function main() {
         const app = Hapi.Server({
             port: process.env.PORT,
         })
-        //Obtendo possiveis erros
-        throw Error('VAI DAR ERRO');
+        /*  
+        
+            Simulando erros na execução de Nodes
+            como exemplo de necessidade para implementar o PM2
+            para gerenciar instâncias da aplicação
+        
+        */
+        // throw Error('VAI DAR ERRO');
 
         await app.register([
             Vision,

@@ -19,7 +19,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "nodemon api.js",
-    "prod": "cross-env NODE_ENV=production node api.js",
+    "prod": "cross-env NODE_ENV=production pm2-runtime api.js",
     "test": "mocha"
   },
   "keywords": [],
