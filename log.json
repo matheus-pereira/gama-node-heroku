@@ -96,3 +96,61 @@
 {"message":"Servidor rodando em: 4000 ","level":"info"}
 {"message":"A url acessada foi: /posts   com os parametros {\"path\":\"/posts\",\"query\":{},\"params\":{},\"payload\":null,\"host\":\"localhost:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T17:46:53.577Z\"}","level":"info"}
 {"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"DEU RUIM listen EADDRINUSE 0.0.0.0:4000","level":"error"}
+{"message":"DEU RUIM listen EADDRINUSE 0.0.0.0:4000","level":"error"}
+{"message":"DEU RUIM listen EADDRINUSE 0.0.0.0:4000","level":"error"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"DEU RUIM listen EADDRINUSE 0.0.0.0:4000","level":"error"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"DEU RUIM listen EADDRINUSE 0.0.0.0:4000","level":"error"}
+{"message":"DEU RUIM listen EADDRINUSE 0.0.0.0:4000","level":"error"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"A url acessada foi: /posts   com os parametros {\"path\":\"/posts\",\"query\":{},\"params\":{},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:54:53.305Z\"}","level":"info"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"A url acessada foi: /posts   com os parametros {\"path\":\"/posts\",\"query\":{},\"params\":{},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:57:05.543Z\"}","level":"info"}
+{"message":"A url acessada foi: /posts   com os parametros {\"path\":\"/posts\",\"query\":{},\"params\":{},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:57:05.572Z\"}","level":"info"}
+{"message":"A url acessada foi: /posts/undefined   com os parametros {\"path\":\"/posts/undefined\",\"query\":{},\"params\":{\"id\":\"undefined\"},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:57:05.579Z\"}","level":"info"}
+{"message":"Deu ruim em: /posts/undefined com os parametros {\"path\":\"/posts/undefined\",\"query\":{},\"params\":{\"id\":\"undefined\"},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:57:05.585Z\",\"err\":{\"message\":\"Cast to ObjectId failed for value \\\"undefined\\\" at path \\\"_id\\\" for model \\\"posts\\\"\",\"name\":\"CastError\",\"stringValue\":\"\\\"undefined\\\"\",\"kind\":\"ObjectId\",\"value\":\"undefined\",\"path\":\"_id\"}}","level":"error"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}
+{"message":"A url acessada foi: /posts   com os parametros {\"path\":\"/posts\",\"query\":{},\"params\":{},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:57:29.526Z\"}","level":"info"}
+{"message":"A url acessada foi: /posts   com os parametros {\"path\":\"/posts\",\"query\":{},\"params\":{},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:57:29.546Z\"}","level":"info"}
+{"message":"A url acessada foi: /posts/undefined   com os parametros {\"path\":\"/posts/undefined\",\"query\":{},\"params\":{\"id\":\"undefined\"},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:57:29.555Z\"}","level":"info"}
+{"message":"Deu ruim em: /posts/undefined com os parametros {\"path\":\"/posts/undefined\",\"query\":{},\"params\":{\"id\":\"undefined\"},\"payload\":null,\"host\":\"WIN-IS04C7473G:4000\",\"username\":\"xuxadasilva\",\"at\":\"2018-11-10T19:57:29.559Z\",\"err\":{\"message\":\"Cast to ObjectId failed for value \\\"undefined\\\" at path \\\"_id\\\" for model \\\"posts\\\"\",\"name\":\"CastError\",\"stringValue\":\"\\\"undefined\\\"\",\"kind\":\"ObjectId\",\"value\":\"undefined\",\"path\":\"_id\"}}","level":"error"}
+{"message":"Servidor rodando em: 4000 ","level":"info"}

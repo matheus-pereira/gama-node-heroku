@@ -6,7 +6,7 @@
   "dependencies": {
     "boom": "7.2.2",
     "cross-env": "5.2.0",
-    "dotenv": "6.1.0",
+    "dotenv": "^6.1.0",
     "hapi": "17.7.0",
     "hapi-auth-jwt2": "8.1.0",
     "hapi-swagger": "9.1.2",
@@ -17,12 +17,17 @@
     "vision": "5.4.3",
     "winston": "^3.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
+  },
   "scripts": {
     "start": "nodemon api.js",
     "preinstall": "npm install -g pm2",
     "prod": "cross-env NODE_ENV=production pm2-runtime api.js",
-    "test": "mocha"
+    "test": "nyc mocha *.test.js -w",
+    "coverage": "nyc --reporter=html --reporter=text mocha *.test.js"
   },
   "keywords": [],
   "author": "",

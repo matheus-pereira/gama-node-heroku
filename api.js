@@ -720,9 +720,14 @@ async function main() {
         //3- Instanciar a rota
         await app.start();
         info(`Servidor rodando em: ${app.info.port} `);
+        //Aumentando tempo de carga para garantir testes
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return app;
     } catch (erro) {
         error(`DEU RUIM ${erro.message}`);
     }
 
 }
-main()
+const result = main()
+
+module.exports = result
