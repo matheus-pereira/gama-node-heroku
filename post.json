@@ -1,0 +1,20 @@
+{
+    "description": "Sempre serei resistência. Menos a você, porque aí eu não resisto",
+    "link": "https://www.osvigaristas.com.br/frases/idiotas/",
+    "publishedAt": "2018-11-08T19:27:35.764Z",
+    "user": {
+        "name": "Mariazinha",
+        "_id": ObjectId("5bb8ce71881ab14faeae5d77"),
+        "photo": "https://pickaface.net/gallery/avatar/17843364_180531_0352_ts1sm.png"
+    },
+    "comments": [{
+        "publishedAt": "2018-11-08T19:27:35.764Z",
+        "text": "Aquela cantora que não é pequena: Ariana Grande.",
+        "user": {
+            "name": "Alonso José",
+            "_id": ObjectId("5bb104f6d3e5631a26686b26"),
+            "photo": "https://pickaface.net/gallery/avatar/20150903_165524_553_Alex_Rider.png"
+        },
+        "likes": 10
+    }]
+}
