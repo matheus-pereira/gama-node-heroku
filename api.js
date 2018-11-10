@@ -165,6 +165,9 @@
 const {
     config
 } = require('dotenv');
+// adiciomos uma configuracao
+// para producao do swagger
+let swaggerHostConfig = {};
 if (process.env.NODE_ENV === 'production') {
     config({
         path: './config/.env.prod'
