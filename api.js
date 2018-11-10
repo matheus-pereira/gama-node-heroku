@@ -21,6 +21,11 @@
         pm2 stop api-posts
         pm2 logs api-posts
 
+        pm2 kill -> mata todos os processos
+
+        adicionamos o pm2-runtime no package.json
+        adicionamos o preinstall no package.json
+
 
     --HEROKU
         Instalamos o heroku cli, via 

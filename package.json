@@ -19,6 +19,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "nodemon api.js",
+    "preinstall": "npm install -g pm2",
     "prod": "cross-env NODE_ENV=production pm2-runtime api.js",
     "test": "mocha"
   },
