@@ -14,6 +14,24 @@
 
         heroku apps:create nomeUnicoDoApp
 
+        git push heroku master
+
+        heroku logs -t
+
+        o swagger, por padrão aponta para a porta
+        que foi definida no seu server.
+
+        Mas para o mundo, sua api vai ser disponibilizada
+        na porta 80 da plataforma. 
+        Adicionamos o host como parametro do .env
+        e verificamos o ambiente
+
+        por padrão o heroku roda o comando npm start
+        e no nosso caso, o nodemon nao existe
+
+        criamos o arquivo Procfile e adicionamos 
+            o comando customizado
+
     --DOT ENV CONFIGURAÇÃO DE AMBIENTES
         Para dividir os ambientes, entre produção e desenvolvimento
 
