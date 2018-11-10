@@ -30,9 +30,16 @@
         e rodamos no terminal do projeto.
         Dessa forma os dois serviços são conectados, permitindo o acesso de métricas da API no painel do PM2
 
-        --para que nossa API seja visível e acessável por front ends,
+    --CORS
+        para que nossa API seja visível e acessável por front ends,
         precisamos definir o CORS (Cross Origin Resource Shared)
 
+    
+    --LOGS
+        Para imprimir resultados no console, conforme
+        as requisições forem chegando, vamos instalar o winston
+
+        npm i winston
 
 
     --HEROKU
@@ -243,6 +250,27 @@ const SwaggerConfig = {
     lang: 'pt',
     ...swaggerHostConfig,
 }
+//Importamos Winston, o módulo de logs
+const winston = require('winston');
+const log = winston.createLogger({
+    format: winston.format.json(),
+    transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({
+            filename: 'log.json'
+        }),
+    ],
+});
+//Substituindo o console.log, console.error pelo winston
+const logRequest = (url, params) => {
+    info(`A url acessada foi: ${url} com os parâmetros ${JSON.stringify(params)}`)
+}
+
+const logError = (url, params) => {
+    error(`Deu ruim em: ${url} com os parâmetros ${JSON.stringify(params)}`)
+}
+const info = log.info;
+const error = log.error;
 
 //Importando o JWT para gerenciar os tokens
 const Jwt = require('jsonwebtoken')
@@ -333,6 +361,33 @@ async function main() {
                 algorithms: ['HS256'],
             },
             validate: (data, request, callback) => {
+                //Pegamos as informações do request para inserir no log
+                const {
+                    path,
+                    query,
+                    params,
+                    payload,
+                    headers: {
+                        host
+                    }
+                } = request;
+
+                const stringLog = `
+                path: ${path},
+                    query: ${query},
+                    params: ${params},
+                    payload: ${payload},
+                    host: ${host}
+                `
+                //Log Request:
+                //1o. parâmetro é URL
+                //2o. parâmetro é o stringlog
+                logRequest(path, {
+                    stringLog
+                });
+
+                //Toda vez que for gerado um token, o dado será aramazenado em log.
+                info(`Token: ${JSON.stringify(dado)} em ${new Date().toISOString()}`)
                 //Aqui podemos realizar alguma validação adicional do usuário, além
                 //da chave válida
                 //Verificar se existe ou se pagou conta, etc
@@ -409,7 +464,7 @@ async function main() {
                             });
                         return resultado
                     } catch (error) {
-                        console.log('DEU RUIM', error)
+                        info('DEU RUIM', error)
                         //Hapi tem um módulo interno chamado Boom, para manipular erros de conexão
                         return Boom.internal()
                     }
@@ -459,7 +514,7 @@ async function main() {
                         return resultado
                     } catch (error) {
 
-                        console.log('DEU RUIM', error)
+                        info('DEU RUIM', error)
                         return Boom.internal();
                     }
                 },
@@ -505,7 +560,7 @@ async function main() {
                         return resultadoMapeado
                     } catch (error) {
 
-                        console.log('DEU RUIM', error)
+                        info('DEU RUIM', error)
                         return Boom.internal();
                     }
                 },
@@ -541,7 +596,7 @@ async function main() {
                         return resultado
                     } catch (error) {
 
-                        console.log('DEU RUIM', error)
+                        info('DEU RUIM', error)
                         return Boom.internal();
                     }
                 },
@@ -573,7 +628,7 @@ async function main() {
                         return resultado
                     } catch (error) {
 
-                        console.log('DEU RUIM', error)
+                        info('DEU RUIM', error)
                         return Boom.internal();
                     }
                 },
@@ -604,8 +659,8 @@ async function main() {
                         const post = request.payload
                         const result = await posts.atualizar(id, post)
                         return result
-                    } catch (error) {
-                        console.error(error);
+                    } catch (erro) {
+                        error(erro);
                         return Boom.internal()
                     }
                 },
@@ -629,9 +684,9 @@ async function main() {
 
         //3- Instanciar a rota
         await app.start()
-        console.log(`servidor rodando, ${app.info.port}`)
-    } catch (error) {
-        console.error('DEU RUIM', error)
+        info(`servidor rodando, ${app.info.port}`)
+    } catch (erro) {
+        error('DEU RUIM', erro)
     }
 }
 main()
