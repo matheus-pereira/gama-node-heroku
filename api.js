@@ -261,6 +261,8 @@ async function main() {
         const app = Hapi.Server({
             port: process.env.PORT,
         })
+        //Obtendo possiveis erros
+        throw Error('VAI DAR ERRO');
 
         await app.register([
             Vision,
