@@ -26,6 +26,14 @@
         adicionamos o pm2-runtime no package.json
         adicionamos o preinstall no package.json
 
+        no PM2-keymetrics, selecionamos a Heroku como ambiente, copiamos as variáveis de ambiente
+        e rodamos no terminal do projeto.
+        Dessa forma os dois serviços são conectados, permitindo o acesso de métricas da API no painel do PM2
+
+        --para que nossa API seja visível e acessável por front ends,
+        precisamos definir o CORS (Cross Origin Resource Shared)
+
+
 
     --HEROKU
         Instalamos o heroku cli, via 
@@ -288,6 +296,16 @@ async function main() {
         //1- Instanciando servidor, passando a porta
         const app = Hapi.Server({
             port: process.env.PORT,
+            /* 
+                Adicionamos a configuração para nossa API
+                ser visível para todos os sites
+            */
+            routes: {
+                //Definir a URL da origem correta, ou utilizar * para liberar acesso completamente
+                cors: {
+                    origin: ['*'],
+                },
+            }
         })
         /*  
         
