@@ -250,27 +250,34 @@ const SwaggerConfig = {
     lang: 'pt',
     ...swaggerHostConfig,
 }
-//Importamos Winston, o módulo de logs
+
+// importamos o modulo de logss
 const winston = require('winston');
 const log = winston.createLogger({
-    format: winston.format.json(),
     transports: [
         new winston.transports.Console(),
         new winston.transports.File({
-            filename: 'log.json'
+            filename: 'log.json',
+            level: 'info'
+        }),
+        new winston.transports.File({
+            filename: 'error.json',
+            level: 'error'
         }),
     ],
 });
-//Substituindo o console.log, console.error pelo winston
-const logRequest = (url, params) => {
-    info(`A url acessada foi: ${url} com os parâmetros ${JSON.stringify(params)}`)
-}
 
-const logError = (url, params) => {
-    error(`Deu ruim em: ${url} com os parâmetros ${JSON.stringify(params)}`)
-}
 const info = log.info;
 const error = log.error;
+
+const logError = (url, params) => {
+    error(`Deu ruim em: ${url} com os parametros ${JSON.stringify(params)}`);
+};
+const logRequest = (url, params) => {
+    info(
+        `A url acessada foi: ${url}   com os parametros ${JSON.stringify(params)}`,
+    );
+};
 
 //Importando o JWT para gerenciar os tokens
 const Jwt = require('jsonwebtoken')
@@ -283,6 +290,30 @@ const HapiJwt = require('hapi-auth-jwt2');
 
 //Importando o banco de dados
 const DatabasePosts = require('./databasePosts')
+
+
+const getRequestData = (request, username = '') => {
+    const {
+        path,
+        query,
+        params,
+        payload,
+        headers: {
+            host
+        },
+    } = request;
+
+    const item = {
+        path,
+        query,
+        params,
+        payload,
+        host,
+        username: username,
+        at: new Date().toISOString(),
+    };
+    return item;
+};
 
 function validateHeaders() {
     return Joi.object({
@@ -362,32 +393,14 @@ async function main() {
             },
             validate: (data, request, callback) => {
                 //Pegamos as informações do request para inserir no log
-                const {
-                    path,
-                    query,
-                    params,
-                    payload,
-                    headers: {
-                        host
-                    }
-                } = request;
 
-                const stringLog = `
-                path: ${path},
-                    query: ${query},
-                    params: ${params},
-                    payload: ${payload},
-                    host: ${host}
-                `
                 //Log Request:
                 //1o. parâmetro é URL
                 //2o. parâmetro é o stringlog
-                logRequest(path, {
-                    stringLog
-                });
 
-                //Toda vez que for gerado um token, o dado será aramazenado em log.
-                info(`Token: ${JSON.stringify(dado)} em ${new Date().toISOString()}`)
+                logRequest(request.path, getRequestData(request, dado.username));
+
+
                 //Aqui podemos realizar alguma validação adicional do usuário, além
                 //da chave válida
                 //Verificar se existe ou se pagou conta, etc
@@ -463,8 +476,11 @@ async function main() {
                                 ignorar
                             });
                         return resultado
-                    } catch (error) {
-                        info('DEU RUIM', error)
+                    } catch (err) {
+                        const item = getRequestData(req, req.auth.credentials.username);
+                        logError(item.path, { ...item,
+                            err
+                        });
                         //Hapi tem um módulo interno chamado Boom, para manipular erros de conexão
                         return Boom.internal()
                     }
@@ -512,9 +528,14 @@ async function main() {
                             _id: id,
                         })
                         return resultado
-                    } catch (error) {
-
-                        info('DEU RUIM', error)
+                    } catch (err) {
+                        const item = getRequestData(
+                            request,
+                            request.auth.credentials.username,
+                        );
+                        logError(item.path, { ...item,
+                            err
+                        });
                         return Boom.internal();
                     }
                 },
@@ -558,9 +579,14 @@ async function main() {
                             return item
                         })
                         return resultadoMapeado
-                    } catch (error) {
-
-                        info('DEU RUIM', error)
+                    } catch (err) {
+                        const item = getRequestData(
+                            request,
+                            request.auth.credentials.username,
+                        );
+                        logError(item.path, { ...item,
+                            err
+                        });
                         return Boom.internal();
                     }
                 },
@@ -594,9 +620,14 @@ async function main() {
                         const item = request.payload
                         const resultado = await posts.cadastrar(item)
                         return resultado
-                    } catch (error) {
-
-                        info('DEU RUIM', error)
+                    } catch (err) {
+                        const item = getRequestData(
+                            request,
+                            request.auth.credentials.username,
+                        );
+                        logError(item.path, { ...item,
+                            err
+                        });
                         return Boom.internal();
                     }
                 },
@@ -626,9 +657,14 @@ async function main() {
                         } = request.params
                         const resultado = await posts.remover(id)
                         return resultado
-                    } catch (error) {
-
-                        info('DEU RUIM', error)
+                    } catch (err) {
+                        const item = getRequestData(
+                            request,
+                            request.auth.credentials.username,
+                        );
+                        logError(item.path, { ...item,
+                            err
+                        });
                         return Boom.internal();
                     }
                 },
@@ -683,10 +719,11 @@ async function main() {
         ])
 
         //3- Instanciar a rota
-        await app.start()
-        info(`servidor rodando, ${app.info.port}`)
+        await app.start();
+        info(`Servidor rodando em: ${app.info.port} `);
     } catch (erro) {
-        error('DEU RUIM', erro)
+        error(`DEU RUIM ${erro.message}`);
     }
+
 }
 main()
