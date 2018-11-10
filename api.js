@@ -364,7 +364,7 @@ async function main() {
                 cors: {
                     origin: ['*'],
                 },
-            }
+            },
         })
         /*  
         
@@ -397,9 +397,7 @@ async function main() {
                 //Log Request:
                 //1o. parâmetro é URL
                 //2o. parâmetro é o stringlog
-
-                logRequest(request.path, getRequestData(request, dado.username));
-
+                logRequest(request.path, getRequestData(request, data.username));
 
                 //Aqui podemos realizar alguma validação adicional do usuário, além
                 //da chave válida
@@ -477,6 +475,7 @@ async function main() {
                             });
                         return resultado
                     } catch (err) {
+                        console.log(err);
                         const item = getRequestData(req, req.auth.credentials.username);
                         logError(item.path, { ...item,
                             err
